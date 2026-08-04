@@ -2,15 +2,23 @@ import { useParams } from "react-router";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function MovieDetails() {
   const [details,setdetails]=useState(null)
   
   const {id}=useParams()
   async function getdetails(){
-    const response=await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=55c22de81b8dc600015494c69d72f9f6`)
+   try {
+     const response=await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=55c22de81b8dc600015494c69d72f9f6`)
     const data=await response.json()
     setdetails(data)
+    console.log(data);
+   } catch (error) {
+    console.log(error);
+    
+   }
+    
     
   }
   useEffect(()=>{
@@ -22,7 +30,7 @@ export default function MovieDetails() {
    {details!==null? <section className="movie-page text-white py-5">
       <div className="container">
 
-        {/* Hero Section */}
+        
         <div className="row g-5 align-items-center">
 
           <div className="col-lg-3 imagepost">
@@ -88,7 +96,7 @@ export default function MovieDetails() {
 
                 <div className="col-md-4">
 
-                  <h4>1,245</h4>
+                  <h4>{details.vote_count}</h4>
 
                   <small className="text-secondary">
                     Votes
@@ -140,14 +148,13 @@ export default function MovieDetails() {
 
         </div>
 
-        {/* Bottom Section */}
+        
 
         <div className="row mt-5 g-4">
 
           <div className="col-lg-8">
 
-            {/* Overview */}
-
+            
             <div className="movie-card">
 
               <h5>
@@ -168,7 +175,7 @@ export default function MovieDetails() {
 
             </div>
 
-            {/* Movie Details */}
+            
 
             <div className="movie-card mt-4">
 
@@ -208,7 +215,7 @@ export default function MovieDetails() {
 
             </div>
 
-            {/* Languages */}
+           
 
            <div className="movie-card mt-4">
 
@@ -222,19 +229,21 @@ export default function MovieDetails() {
 
     <hr />
 
-    <span className="badge bg-dark border me-2">
-        English
+   {details.spoken_languages.map((lang)=>{
+        return  <span className="badge bg-dark border me-2">
+       {lang.name}
     </span>
+       })}
 
 </div>
 
           </div>
 
-          {/* Right Side */}
+         
 
           <div className="col-lg-4">
 
-            <div className="movie-card">
+            {details.belongs_to_collection?<div className="movie-card">
 
               <h5>
 
@@ -257,7 +266,7 @@ export default function MovieDetails() {
 
                 <div>
 
-                  <h6>Zootopia Collection</h6>
+                  <h6>{details.belongs_to_collection.name}</h6>
 
                   <button className="btn trailer-btn btn-sm">
                     View Collection
@@ -267,7 +276,7 @@ export default function MovieDetails() {
 
               </div>
 
-            </div>
+            </div>:''}
             
 
           <div className="movie-card mt-4">

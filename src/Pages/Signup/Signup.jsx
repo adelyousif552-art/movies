@@ -65,7 +65,7 @@ export default function Signup() {
   <input type="text" className="form-control" id="name" placeholder="name@example.com" value={name} onChange={(e)=>{
     setname(e.target.value)
   }}/>
-  <label htmlFor="fname" className=" text-secondary">Full Name</label>
+  <label htmlFor="name" className=" text-secondary">Full Name</label>
 </div>
 <div className="form-floating mb-3">
   <input type="email" className="form-control" id="email" placeholder="Password" value={email} onChange={(e)=>{setemail(e.target.value)}}/>
