@@ -9,18 +9,21 @@ export default function MovieDetails() {
   
   const {id}=useParams()
   async function getdetails(){
-   try {
-     const response=await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=55c22de81b8dc600015494c69d72f9f6`)
-    const data=await response.json()
-    setdetails(data)
-    console.log(data);
-   } catch (error) {
-    console.log(error);
-    
-   }
-    
-    
-  }
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=55c22de81b8dc600015494c69d72f9f6`)
+        const data = await response.json()
+        
+        if(data.success === false){
+            toast.error(data.status_message || "Movie not found")
+            return   
+        }
+        
+        setdetails(data)
+    } catch (error) {
+        toast.error("something went wrong")
+        console.log(error)
+    }
+}
   useEffect(()=>{
     getdetails()
   },[])
