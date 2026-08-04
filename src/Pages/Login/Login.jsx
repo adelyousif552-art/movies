@@ -26,11 +26,11 @@ export default function Login() {
     const data=await response.json()
     if(data.message==="success"){
       toast.success("signed in succesffully");
-
-    }
-    setTimeout(() => {
+ setTimeout(() => {
       navigate('/')
     }, 3000);
+    }
+   
     
   }
 
@@ -53,13 +53,13 @@ export default function Login() {
         <form onSubmit={handlelogin}>
          
 <div className="form-floating mb-3">
-  <input type="email" className="form-control" id="floatingPassword" placeholder="Password" value={email} onChange={(e)=>{setemail(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Email Address</label>
+  <input type="email" className="form-control" id="email" placeholder="Password" value={email} onChange={(e)=>{setemail(e.target.value)}}/>
+  <label htmlFor="email" className="text-secondary">Email Address</label>
 </div>
 
 <div className="form-floating mb-3">
-  <input type="password" className="form-control" id="floatingPassword" placeholder="Password" value={password} onChange={(e)=>{setpassword(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Password</label>
+  <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e)=>{setpassword(e.target.value)}}/>
+  <label htmlFor="password" className="text-secondary">Password</label>
 </div>
 
 <div className="buttons text-center mt-3">

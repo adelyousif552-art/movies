@@ -35,11 +35,12 @@ export default function Signup() {
    const data=await response.json()
    if(data.message==="success"){
     toast.success("signed up successffuly")
-   }
-   setTimeout(() => {
+    setTimeout(() => {
     navigate('/login')
     
    }, 3000);
+   }
+   
    
     
   }
@@ -61,26 +62,26 @@ export default function Signup() {
       <div className="inputs">
         <form onSubmit={handlesubmit}>
           <div className="form-floating mb-3">
-  <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" value={name} onChange={(e)=>{
+  <input type="text" className="form-control" id="name" placeholder="name@example.com" value={name} onChange={(e)=>{
     setname(e.target.value)
   }}/>
-  <label htmlFor="floatingInput" className=" text-secondary">Full Name</label>
+  <label htmlFor="fname" className=" text-secondary">Full Name</label>
 </div>
 <div className="form-floating mb-3">
-  <input type="email" className="form-control" id="floatingPassword" placeholder="Password" value={email} onChange={(e)=>{setemail(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Email Address</label>
+  <input type="email" className="form-control" id="email" placeholder="Password" value={email} onChange={(e)=>{setemail(e.target.value)}}/>
+  <label htmlFor="email" className="text-secondary">Email Address</label>
 </div>
 <div className="form-floating mb-3">
-  <input type="tel" className="form-control" id="floatingPassword" placeholder="Password" value={phone} onChange={(e)=>{setphone(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Phone Number</label>
+  <input type="tel" className="form-control" id="phone" placeholder="Password" value={phone} onChange={(e)=>{setphone(e.target.value)}}/>
+  <label htmlFor="phone" className="text-secondary">Phone Number</label>
 </div>
 <div className="form-floating mb-3">
-  <input type="password" className="form-control" id="floatingPassword" placeholder="Password" value={password} onChange={(e)=>{setpassword(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Password</label>
+  <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e)=>{setpassword(e.target.value)}}/>
+  <label htmlFor="password" className="text-secondary">Password</label>
 </div>
 <div className="form-floating">
-  <input type="password" className="form-control" id="floatingPassword" placeholder="Password" value={rePassword} onChange={(e)=>{setrepassword(e.target.value)}}/>
-  <label htmlFor="floatingPassword" className="text-secondary">Confirm Password</label>
+  <input type="password" className="form-control" id="confirmpass" placeholder="Password" value={rePassword} onChange={(e)=>{setrepassword(e.target.value)}}/>
+  <label htmlFor="confirmpass" className="text-secondary">Confirm Password</label>
 </div>
 <div className="buttons text-center mt-3">
   <button className="button p-3 rounded-5 text-white ">Create Account</button>
